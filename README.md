@@ -1,6 +1,6 @@
 # Slick Dealer Skill for Amazon Alexa
 
-Slick Dealer is an Amazon Alexa Skill built with the Go programming language. It is an unofficial virtual assistant to the [Slickdeals](https://www.slickdeals.net) website, with no endorsements from Slickdeals.
+[Slick Dealer](https://www.amazon.com/gp/product/B07J43J36F?ie=UTF8&ref-suffix=ss_rw) is an Amazon Alexa Skill built with the Go programming language. It is an unofficial virtual assistant to the [Slickdeals](https://www.slickdeals.net) website, with no endorsements from Slickdeals.
 
 ## How it Works
 
