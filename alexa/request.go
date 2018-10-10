@@ -5,9 +5,10 @@ package alexa
 // https://medium.com/@amalec/alexa-skills-with-go-54db0c21e758
 
 const (
-	HelpIntent   = "AMAZON.HelpIntent"
-	CancelIntent = "AMAZON.CancelIntent"
-	StopIntent   = "AMAZON.StopIntent"
+	HelpIntent     = "AMAZON.HelpIntent"
+	CancelIntent   = "AMAZON.CancelIntent"
+	StopIntent     = "AMAZON.StopIntent"
+	FallbackIntent = "AMAZON.FallbackIntent"
 )
 
 const (

@@ -49,8 +49,8 @@ func IntentDispatcher(request alexa.Request) alexa.Response {
 		response = HandleHelpIntent(request)
 	case "AboutIntent":
 		response = HandleAboutIntent(request)
-	default:
-		response = HandleAboutIntent(request)
+	case alexa.FallbackIntent:
+		response = HandleHelpIntent(request)
 	}
 	return response
 }
