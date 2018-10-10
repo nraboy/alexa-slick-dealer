@@ -40,6 +40,9 @@ func RequestFeed(mode string) (FeedResponse, error) {
 
 func IntentDispatcher(request alexa.Request) alexa.Response {
 	var response alexa.Response
+	if request.Body.Type == "LaunchRequest" {
+		response = alexa.NewRepromptResponse("You can ask a question like, get me the front page deals, or give me the popular deals.", "For instructions on what you can say, please say help me.")
+	}
 	switch request.Body.Intent.Name {
 	case "FrontpageDealIntent":
 		response = HandleFrontpageDealIntent(request)
@@ -47,6 +50,10 @@ func IntentDispatcher(request alexa.Request) alexa.Response {
 		response = HandlePopularDealIntent(request)
 	case alexa.HelpIntent:
 		response = HandleHelpIntent(request)
+	case alexa.StopIntent:
+		response = HandleStopIntent(request)
+	case alexa.CancelIntent:
+		response = HandleStopIntent(request)
 	case "AboutIntent":
 		response = HandleAboutIntent(request)
 	case alexa.FallbackIntent:
@@ -90,7 +97,11 @@ func HandleHelpIntent(request alexa.Request) alexa.Response {
 }
 
 func HandleAboutIntent(request alexa.Request) alexa.Response {
-	return alexa.NewSimpleResponse("About", "Slick Dealer was created by Nic Raboy in Tracy, California as an unofficial Slick Deals application.")
+	return alexa.NewSimpleResponseWithCard("About", "Slick Dealer was created by Nic Raboy in Tracy, California as an unofficial Slick Deals application.")
+}
+
+func HandleStopIntent(request alexa.Request) alexa.Response {
+	return alexa.NewSimpleResponse("Cancel and Stop", "Goodbye")
 }
 
 func Handler(request alexa.Request) (alexa.Response, error) {

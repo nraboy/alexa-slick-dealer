@@ -6,7 +6,7 @@ package alexa
 
 import "strings"
 
-func NewSimpleResponse(title string, text string) Response {
+func NewSimpleResponseWithCard(title string, text string) Response {
 	r := Response{
 		Version: "1.0",
 		Body: ResBody{
@@ -20,6 +20,40 @@ func NewSimpleResponse(title string, text string) Response {
 				Content: text,
 			},
 			ShouldEndSession: true,
+		},
+	}
+	return r
+}
+
+func NewSimpleResponse(title string, text string) Response {
+	r := Response{
+		Version: "1.0",
+		Body: ResBody{
+			OutputSpeech: &Payload{
+				Type: "PlainText",
+				Text: text,
+			},
+			ShouldEndSession: true,
+		},
+	}
+	return r
+}
+
+func NewRepromptResponse(text string, reprompt string) Response {
+	r := Response{
+		Version: "1.0",
+		Body: ResBody{
+			OutputSpeech: &Payload{
+				Type: "PlainText",
+				Text: text,
+			},
+			Reprompt: &Reprompt{
+				OutputSpeech: Payload{
+					Type: "PlainText",
+					Text: reprompt,
+				},
+			},
+			ShouldEndSession: false,
 		},
 	}
 	return r
